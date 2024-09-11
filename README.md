@@ -11,6 +11,7 @@ The project is implemented in a Google Colab notebook and covers data loading, p
 4. [Generating Predictions](#generating-predictions)
 5. [Usage](#usage)
 6. [License](#license)
+7. [Contact](#contact)
 
 ## Setup
 The following Python packages are required for this project:
