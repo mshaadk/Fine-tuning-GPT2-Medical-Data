@@ -11,7 +11,8 @@ Model Training
 Generating Predictions
 Usage
 Acknowledgements
-Setup
+
+## Setup
 The following Python packages are required for this project:
 
 torch
