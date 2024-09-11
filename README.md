@@ -6,51 +6,53 @@ The project is implemented in a Google Colab notebook and covers data loading, p
 
 ## Contents
 1. [Setup](#setup)
-Data Preparation
-Model Training
-Generating Predictions
-Usage
-Acknowledgements
+2. [Data Preparation](#data-preparation)
+3. [Model Training](#model-training)
+4. [Generating Predictions](#generating-predictions)
+5. [Usage](#usage)
+6. [License](#license)
 
 ## Setup
 The following Python packages are required for this project:
 
-torch
-torchtext
-transformers
-sentencepiece
-pandas
-tqdm
-datasets
+- `torch`
+- `torchtext`
+- `transformers`
+- `sentencepiece`
+- `pandas`
+- `tqdm`
+- `datasets`
+  
 You can install these packages using the following command:
 
-python
-Copy code
+```python
 !pip install torch torchtext transformers sentencepiece pandas tqdm datasets
-Data Preparation
-Load Data: The dataset used is QuyenAnhDE/Diseases_Symptoms, which contains information about various diseases and their symptoms.
+```
 
-Preprocess Data: The symptoms are formatted as comma-separated strings to make them easier to work with.
+## Data Preparation
+1. **Load Data**: The dataset used is `QuyenAnhDE/Diseases_Symptoms`, which contains information about various diseases and their symptoms.
 
-Create Dataset Class: A custom LanguageDataset class is defined for handling data in a format suitable for GPT-2 training.
+2. **Preprocess Data**: The symptoms are formatted as comma-separated strings to make them easier to work with.
 
-Model Training
-Model Selection: We use the distilgpt2 model, a smaller and faster version of GPT-2, for fine-tuning.
+3. **Create Dataset Class**: A custom `LanguageDataset` class is defined for handling data in a format suitable for GPT-2 training.
 
-Training Loop: The training involves updating the model's weights using the CrossEntropyLoss function and the Adam optimizer. The training and validation losses are logged for each epoch.
+## Model Training
+1. **Model Selection**: We use the `distilgpt2` model, a smaller and faster version of GPT-2, for fine-tuning.
 
-Parameters:
+2. **Training Loop**: The training involves updating the model's weights using the CrossEntropyLoss function and the Adam optimizer. The training and validation losses are logged for each epoch.
 
-Batch Size: 8
-Learning Rate: 5e-4
-Number of Epochs: 10
-Device Configuration: The model training can run on GPU, MPS, or CPU depending on the available hardware.
+3. **Parameters**:
 
-Generating Predictions
+ - **Batch Size**: 8
+ - **Learning Rate**: 5e-4
+ - **Number of Epochs**: 10
+   
+4. **Device Configuration**: The model training can run on GPU, MPS, or CPU depending on the available hardware.
+
+## Generating Predictions
 Once the model is trained, you can use it to generate text based on input queries. For example, given the input string "Kidney Failure", the model generates related text.
 
-python
-Copy code
+```python
 input_str = "Kidney Failure"
 input_ids = tokenizer.encode(input_str, return_tensors='pt').to(device)
 
@@ -67,16 +69,26 @@ output = model.generate(
 
 decoded_output = tokenizer.decode(output[0], skip_special_tokens=True)
 print(decoded_output)
-Usage
-Clone the Repository:
+```
 
-bash
-Copy code
-git clone https://github.com/yourusername/SmallMedLM.git
-Open the Colab Notebook:
+## Usage
+### 1. Clone the Repository:
 
-Upload the notebook to Google Colab.
-Run each cell to execute the code.
-Load and Use the Model:
+```bash
+git clone https://github.com/mshaadk/Fine-tuning-GPT2-Medical-Data.git
+```
 
-Use the saved model file (SmallMedLM.pt) for generating predictions or further training.
+### 2. Open the Colab Notebook:
+
+- Upload the notebook to Google Colab.
+- Run each cell to execute the code.
+### 3. Load and Use the Model:
+
+- Use the saved model file (`SmallMedLM.pt`) for generating predictions or further training.
+
+## License
+This project is licensed under the [MIT License](LICENSE.txt).
+
+## Contact
+For any questions or suggestions, feel free to reach out to [Mohamed Shaad](https://www.linkedin.com/in/mohamedshaad/).
+
